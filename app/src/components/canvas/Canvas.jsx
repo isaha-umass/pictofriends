@@ -1,38 +1,42 @@
-import { useState } from 'react'
-import reactLogo from '../../assets/react.svg'
-import viteLogo from '/vite.svg'
+//import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./Canvas.css"
+import { ReactSketchCanvas } from 'react-sketch-canvas';
+// import ColorPicker, { useColor } from "react-color-palette";
+import { useRef } from "react";
+
+const styles = {
+  border: '0.0625rem solid #9c9c9c',
+  borderRadius: '0.25rem',
+};
 
 function Canvas() {
-  const [count, setCount] = useState(0)
+   
+    const canvasRef = useRef(null);
 
-  //const uploadDrawing = () => {};
+    const clearCanvas = () => {
+        canvasRef.current.clearCanvas();
+    };
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Guys this will become pictograph eventually trust!!!!
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const exportDrawing = async () => {
+        const dataURL = await canvasRef.current.exportImage('png');
+        console.log(dataURL);
+    };
+    
+    return (
+        <div className = "Canvas">
+        <h1>Draw here!</h1>
+        <button onClick={clearCanvas}>Clear</button>
+        <button onClick={exportDrawing}>Export as PNG</button>
+        <ReactSketchCanvas
+            style={styles}
+            width="100%"
+            height="400"
+            strokeWidth={4}
+            strokeColor="red"
+        />
+        </div>
+    );
 }
 
 export default Canvas
