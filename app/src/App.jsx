@@ -57,6 +57,8 @@ function App() {
             updateDoc(group, {matchings: match});
           })
       }
+    }).catch((error) => {
+      console.log(error);
     })
   }, []);
 
