@@ -1,6 +1,7 @@
 import {signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
 import { useState } from 'react'
-import {app} from "firebase"
+import {app} from "../../../firebase"
+import { Link } from 'react-router-dom'
 
 function Registration() {
     const [email, setEmail] = useState('');
@@ -50,8 +51,9 @@ function Registration() {
                 onChange = {(e)=>setPassword(e.target.value)}
                 placeholder = "Enter your password..."
                 />
-
-                <button type = "submit" onClick = {handleLogin}> Log in </button>
+                <Link to="/canvas">
+                    <button type = "submit" onClick = {handleLogin}> Log in </button>
+                </Link>
             </form>
 
             <button onClick={handleSignup}> Sign Up </button>
