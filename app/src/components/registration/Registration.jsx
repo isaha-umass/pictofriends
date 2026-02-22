@@ -2,10 +2,13 @@ import {signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createU
 import { useState } from 'react'
 import {app} from "../../../firebase"
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import "./Registration.css"
 
 function Registration() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
   //  const [loginError, setLoginError] = useState('');
 
     const auth = getAuth(app)
@@ -17,6 +20,7 @@ function Registration() {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             console.log("Sign up done")
+            navigate("/join");
         } catch (error) {
             console.log(error)
         }
@@ -25,6 +29,7 @@ function Registration() {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             console.log("Sign in done")
+            navigate("/feed");
         } catch (error) {
             console.log(error.code)
         }
@@ -33,33 +38,48 @@ function Registration() {
         try {
             await signInWithPopup(auth, provider)
             console.log("log in done")
+            navigate("/feed");
         } catch (error) {
             console.log(error)
         }
     }
     return (
-        <div>
-            <form>
-                <input type = "text" 
+        <div className="registration-container">
+            <img
+            src="/logo.jpg"
+            alt="Logo"
+            className="top-image"
+            />
+
+            <div className="registration-box">
+            <form className="registration-form" onSubmit={(e)=> e.preventDefault()}>
+                <input 
+                type = "text" 
                 value = {email}
                 onChange = {(e)=>setEmail(e.target.value)}
-                placeholder = "Enter your email..."
+                placeholder = "email"
                 />
 
-                <input type = "password" 
+                <input 
+                type = "password" 
                 value = {password}
                 onChange = {(e)=>setPassword(e.target.value)}
-                placeholder = "Enter your password..."
+                placeholder = "password"
                 />
                 <Link to="/canvas">
                     <button type = "submit" onClick = {handleLogin}> Log in </button>
                 </Link>
-            </form>
+            </form> <br/>
+            <div className="extra-buttons">
 
-            <button onClick={handleSignup}> Sign Up </button>
+            <button onClick={handleSignup} className="signup-btn"> Sign Up </button>
 
-            <button onClick = {handleGoogleLogin}> Continue with Google </button>
+            <button onClick = {handleGoogleLogin} className="google-btn">Continue with Google</button>
+            </div>
+            </div>
         </div>
+
+    
     )
 
 }
