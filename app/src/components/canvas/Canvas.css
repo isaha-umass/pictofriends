@@ -1,67 +1,10 @@
 .Canvas {
-  font-family: sans-serif;
-  text-align: center;
+  margin: 10px;
+  border-radius: 20px;
+  display:grid;
+  grid-row: 1fr;
 }
 
-body {
-  background: #1f2041;
-  /* background-repeat: no-repeat; */
-  overflow: hidden;
+.canvasBtn {
+  margin: 20px;
 }
-
-html,
-body {
-  height: 100%;
-
-  color: #b3c497;
-}
-
-.thickness {
-  /* border-radius: 50%; */
-  border-radius: 50%;
-}
-
-.container {
-  width: fit-content;
-  border-radius: 20rem;
-}
-.canvas-wrapper {
-  border-radius: 2rem; /* adjust roundness here */
-  overflow: hidden; /* this makes it actually clip */
-  display: inline-block;
-}
-
-input {
-  background: transparent;
-  border: none;
-  margin-bottom: 4vmin;
-  /* border: 2px solid #a7f3d0; */
-  border-radius: 4rem;
-  margin-left: 2vmin;
-}
-button {
-  background: #cca4a3;
-  border: none;
-  margin-bottom: 4vmin;
-  margin-top: 4vmin;
-  border: 2px solid #cca4a3;
-  border-radius: 2rem;
-  margin-left: 2vmin;
-  padding: 2vmin 2rem;
-}
-
-.brush-preview-container {
-  width: 60px; /* fixed */
-  height: 60px; /* fixed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem auto; /* center & space */
-}
-
-.brush-preview {
-  background: #000;
-  border-radius: 50%;
-  transition: width 0.15s, height 0.15s;
-}
-

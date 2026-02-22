@@ -50,7 +50,7 @@ function Join() {
 
     return (
         <div>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={(e) => e.preventDefault()} id = "join">
                 <label for="displayname">Enter Display Name:</label>
                 <input type = "text" id = "displayname" value = {user}
                 onChange = {(e)=>setUser(e.target.value)} placeholder='johnnyapplesmith'></input>
@@ -59,9 +59,9 @@ function Join() {
                 <input type = "text" id = "group" value = {group}
                 onChange = {(e)=>setGroup(e.target.value)} placeholder="Long string..."></input>
 
-                <button id = "create-group" onClick = {createGroup}> Create New Group </button>
+                <button id = "create-group" onClick = {()=>navigate("/feed")}> Create New Group </button>
             
-                <button type = "submit" onClick = {createUser}> Join </button>
+                <button type = "submit" onClick = {()=>navigate("/feed")}> Join </button>
             </form>
         </div>
     )
