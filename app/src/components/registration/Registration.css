@@ -1,0 +1,87 @@
+body {
+    background-color: #99E0FF;
+  }
+button {
+    background-color: #1F2041;
+    color: white;
+    padding: 10px 20px;
+    border:none;
+    border-radius: 6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background-color: #B3c497;
+}
+
+html, body{
+    height: 100%;
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+
+.registration-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    gap:20px;
+
+}
+.registration-box{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    background-color: #e6c2dd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 320px;
+}
+
+.registration-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width:260px;
+}
+
+.registration-form input {
+    padding: 10px;
+    border-radius: 5px;
+    color: #e6c2dd;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-size: 16px;
+
+}
+
+.login-btn{
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.google-btn{
+    background-color: #1F2041;
+    color: white;
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.top-image{
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width:350px;
+    height:auto;
+    width:100%;
+}

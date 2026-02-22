@@ -44,27 +44,42 @@ function Registration() {
         }
     }
     return (
-        <div>
-            <form>
-                <input type = "text" 
+        <div className="registration-container">
+            <img
+            src="/logo.jpg"
+            alt="Logo"
+            className="top-image"
+            />
+
+            <div className="registration-box">
+            <form className="registration-form" onSubmit={(e)=> e.preventDefault()}>
+                <input 
+                type = "text" 
                 value = {email}
                 onChange = {(e)=>setEmail(e.target.value)}
-                placeholder = "Enter your email..."
+                placeholder = "email"
                 />
 
-                <input type = "password" 
+                <input 
+                type = "password" 
                 value = {password}
                 onChange = {(e)=>setPassword(e.target.value)}
-                placeholder = "Enter your password..."
+                placeholder = "password"
                 />
-                
-                 <button type = "submit" onClick = {handleLogin}> Log in </button>
-            </form>
+                <Link to="/canvas">
+                    <button type = "submit" onClick = {handleLogin}> Log in </button>
+                </Link>
+            </form> <br/>
+            <div className="extra-buttons">
 
-            <button onClick={handleSignup}> Sign Up </button>
+            <button onClick={handleSignup} className="signup-btn"> Sign Up </button>
 
-            <button onClick = {handleGoogleLogin}> Continue with Google </button>
+            <button onClick = {handleGoogleLogin} className="google-btn">Continue with Google</button>
+            </div>
+            </div>
         </div>
+
+    
     )
 
 }
