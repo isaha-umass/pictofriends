@@ -1,42 +1,67 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.Canvas {
+  font-family: sans-serif;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  background: #1f2041;
+  /* background-repeat: no-repeat; */
+  overflow: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html,
+body {
+  height: 100%;
+
+  color: #b3c497;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.thickness {
+  /* border-radius: 50%; */
+  border-radius: 50%;
 }
 
-.card {
-  padding: 2em;
+.container {
+  width: fit-content;
+  border-radius: 20rem;
+}
+.canvas-wrapper {
+  border-radius: 2rem; /* adjust roundness here */
+  overflow: hidden; /* this makes it actually clip */
+  display: inline-block;
 }
 
-.read-the-docs {
-  color: #888;
+input {
+  background: transparent;
+  border: none;
+  margin-bottom: 4vmin;
+  /* border: 2px solid #a7f3d0; */
+  border-radius: 4rem;
+  margin-left: 2vmin;
 }
+button {
+  background: #cca4a3;
+  border: none;
+  margin-bottom: 4vmin;
+  margin-top: 4vmin;
+  border: 2px solid #cca4a3;
+  border-radius: 2rem;
+  margin-left: 2vmin;
+  padding: 2vmin 2rem;
+}
+
+.brush-preview-container {
+  width: 60px; /* fixed */
+  height: 60px; /* fixed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto; /* center & space */
+}
+
+.brush-preview {
+  background: #000;
+  border-radius: 50%;
+  transition: width 0.15s, height 0.15s;
+}
+
