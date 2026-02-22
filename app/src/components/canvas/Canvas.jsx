@@ -4,6 +4,9 @@ import "./Canvas.css"
 import { ReactSketchCanvas } from 'react-sketch-canvas';
 // import ColorPicker, { useColor } from "react-color-palette";
 import { useRef } from "react";
+import { storage } from '../../../firebase';
+import { v4 } from 'uuid';
+import { ref, uploadBytes } from 'firebase/storage';
 
 const styles = {
   border: '0.0625rem solid #9c9c9c',
@@ -18,22 +21,34 @@ function Canvas() {
         canvasRef.current.clearCanvas();
     };
 
-    const exportDrawing = async () => {
-        const dataURL = await canvasRef.current.exportImage('png');
-        console.log(dataURL);
+    const exportDrawing = async (e) => {
+        try {
+            if (canvasRef.current) {
+                const dataUrl = await canvasRef.current.exportImage("png");
+                const response = await fetch(dataUrl);
+                const blob = await response.blob();
+                const imageRef = ref(storage, "images/" + Date.now()+"/" + v4()+".png")
+                await uploadBytes(imageRef, blob);
+                console.log("uploaded")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        
     };
     
     return (
         <div className = "Canvas">
-        <h1>Draw here!</h1>
+        <h1>Ready, set, draw!</h1>
         <button onClick={clearCanvas}>Clear</button>
-        <button onClick={exportDrawing}>Export as PNG</button>
+        <button onClick={exportDrawing}>Save</button>
         <ReactSketchCanvas
+            ref={canvasRef} 
             style={styles}
             width="100%"
-            height="400"
+            height="4500"
             strokeWidth={4}
-            strokeColor="red"
+            strokeColor="black"
         />
         </div>
     );

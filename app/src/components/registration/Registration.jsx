@@ -1,8 +1,9 @@
-import {signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
+import {signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword} from 'firebase/auth'
 import { useState } from 'react'
 import {app} from "../../../firebase"
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { auth } from '../../../firebase'
 import "./Registration.css"
 
 function Registration() {
@@ -11,13 +12,14 @@ function Registration() {
     const navigate = useNavigate();
   //  const [loginError, setLoginError] = useState('');
 
-    const auth = getAuth(app)
     const provider = new GoogleAuthProvider()
     provider.addScope('profile');
     provider.addScope('email');
 
     const handleSignup = async(e) => {
         try {
+            e.preventDefault();
+            console.log(e)
             await createUserWithEmailAndPassword(auth, email, password);
             console.log("Sign up done")
             navigate("/join");
@@ -27,6 +29,8 @@ function Registration() {
     }
     const handleLogin = async(e) => {
         try {
+            e.preventDefault();
+            console.log(e)
             await signInWithEmailAndPassword(auth, email, password);
             console.log("Sign in done")
             navigate("/feed");
@@ -36,6 +40,8 @@ function Registration() {
     }
     const handleGoogleLogin = async(e) => {
         try {
+            e.preventDefault();
+            console.log(e)
             await signInWithPopup(auth, provider)
             console.log("log in done")
             navigate("/feed");
