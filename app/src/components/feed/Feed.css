@@ -1,0 +1,15 @@
+#feed {
+    display: grid;
+    grid-row: 1fr;
+    overflow-y: auto;
+    height: 100vh;
+    gap: 20px;
+}
+
+.image {
+    margin: 20px;
+    border-radius: 50px;
+}
+#logo {
+    align-self: center;
+}

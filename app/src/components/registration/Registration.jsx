@@ -24,6 +24,7 @@ function Registration() {
             console.log("Sign up done")
             navigate("/join");
         } catch (error) {
+            alert(error)
             console.log(error)
         }
     }
@@ -35,6 +36,7 @@ function Registration() {
             console.log("Sign in done")
             navigate("/feed");
         } catch (error) {
+            alert(error)
             console.log(error.code)
         }
     }
@@ -46,6 +48,7 @@ function Registration() {
             console.log("log in done")
             navigate("/feed");
         } catch (error) {
+            alert(error)
             console.log(error)
         }
     }

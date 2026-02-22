@@ -10,7 +10,7 @@ import Canvas from './components/canvas/Canvas';
 import Feed from './components/feed/Feed';
 import Join from './components/join/Join';
 import './App.css'
-import { db } from './firebase.js'
+import { db } from '../firebase.js'
 import { doc, collection, getDoc, getDocs, updateDoc } from 'firebase/firestore'
 
 function makePairs (userList) {
@@ -66,7 +66,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Registration />} />
+        <Route path="/" index element={<Registration />} />
         <Route path="/canvas" element={<Canvas/>} />
         <Route path="/feed" element={<Feed/>} />
         <Route path="/join" element={<Join/>} />
