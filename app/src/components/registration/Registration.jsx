@@ -2,11 +2,13 @@ import {signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createU
 import { useState } from 'react'
 import {app} from "../../../firebase"
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import "./Registration.css"
 
 function Registration() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
   //  const [loginError, setLoginError] = useState('');
 
     const auth = getAuth(app)
@@ -18,6 +20,7 @@ function Registration() {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             console.log("Sign up done")
+            navigate("/join");
         } catch (error) {
             console.log(error)
         }
@@ -26,6 +29,7 @@ function Registration() {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             console.log("Sign in done")
+            navigate("/feed");
         } catch (error) {
             console.log(error.code)
         }
@@ -34,6 +38,7 @@ function Registration() {
         try {
             await signInWithPopup(auth, provider)
             console.log("log in done")
+            navigate("/feed");
         } catch (error) {
             console.log(error)
         }
